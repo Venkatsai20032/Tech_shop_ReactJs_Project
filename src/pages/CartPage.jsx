@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FaTrash } from 'react-icons/fa'
 import { useCart } from "../context/CartContext";
 import Footer from "../components/Footer";
 
@@ -55,7 +56,9 @@ export default function CartPage() {
                     <button className="btn btn-outline-light" onClick={() => decQty(item.id)}>-</button>
                     <span className="px-3">{item.qty}</span>
                     <button className="btn btn-outline-light" onClick={() => incQty(item.id)}>+</button>
-                    <button className="btn btn-sm btn-danger ms-3" onClick={() => removeItem(item.id)}>Remove</button>
+                    <button className="btn btn-sm btn-outline-danger ms-3" onClick={() => removeItem(item.id)} aria-label={`Delete ${item.name}`} title="Delete">
+                      <FaTrash />
+                    </button>
                   </div>
                 </div>
 

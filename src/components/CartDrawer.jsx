@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaTrash } from 'react-icons/fa'
 import { useCart } from '../context/CartContext'
 
 export default function CartDrawer() {
@@ -42,7 +43,9 @@ export default function CartDrawer() {
                       <button className="btn btn-outline-light btn-sm" onClick={() => decQty(item.id)}>-</button>
                       <span style={{ padding: '0 8px' }}>{item.qty}</span>
                       <button className="btn btn-outline-light btn-sm" onClick={() => incQty(item.id)}>+</button>
-                      <button className="btn btn-sm btn-danger ms-3" onClick={() => removeItem(item.id)}>Remove</button>
+                      <button className="btn btn-sm btn-outline-danger ms-3" onClick={() => removeItem(item.id)} aria-label={`Delete ${item.name}`} title="Delete">
+                        <FaTrash />
+                      </button>
                     </div>
                   </div>
                 </div>
