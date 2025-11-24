@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaArrowUp } from "re
 import { FaTruckFast, FaShieldHalved, FaTags, FaCreditCard } from "react-icons/fa6";
 
 
-export default function Footer() {
+export default function Footer({ fluid = false }) {
   const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
@@ -22,8 +22,8 @@ export default function Footer() {
   return (
 <>
 
-     <div className="w-100 bg-black text-white py-5">
-  <div className="container text-center pb-4">
+      <div className="w-100 bg-black text-white py-5">
+    <div className={fluid ? 'container-fluid px-4 px-md-5 text-center pb-4' : 'container text-center pb-4'}>
     <h2 className="fw-bold mb-5 text-white">Our Advantages</h2>
 
     <div className="row justify-content-center">
@@ -78,7 +78,7 @@ export default function Footer() {
 
     <footer className="bg-dark text-light pt-5 pb-5 position-relative">
 
-      <div className="container">
+      <div className={fluid ? 'container-fluid px-4 px-md-5' : 'container'}>
         <div className="row g-5">
           {/* Tech-Shop */}
           <div className="col-12 col-md-3">
