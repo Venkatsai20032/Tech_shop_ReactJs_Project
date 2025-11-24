@@ -1,0 +1,22 @@
+.product-tabs .nav-link{
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  transition: color .15s ease, border-bottom .15s ease;
+}
+
+.product-tabs .nav-link:hover{
+  color: #ff4d4d;
+  border-bottom: 2px solid #ff4d4d;
+}
+
+.product-tabs .nav-link.active{
+  color: #ff4d4d;
+  border-bottom: 2px solid #ff4d4d;
+}
+
+/* ensure focus is visible for accessibility */
+.product-tabs .nav-link:focus{
+  outline: 2px dashed rgba(255,77,77,0.35);
+  outline-offset: 4px;
+}

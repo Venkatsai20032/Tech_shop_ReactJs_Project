@@ -4,6 +4,7 @@ import productData from "../Data/Product_Details"; // 19 products array
 import { Aproducts } from "../Data/Aproducts";
 import { topproducts } from "../Data/TopProducts";
 import RelatedCard from "./RelatedCard";
+import './ProductDetails.css';
 import Footer from "../components/Footer";
 import { useCart } from "../context/CartContext";
 
@@ -210,7 +211,7 @@ export default function ProductDetails() {
 
       {/* SPECIFICATIONS / OVERVIEW / REVIEWS */}
       <div className="mt-5">
-        <ul className="nav justify-content-center mb-3" role="tablist" style={{ gap: 150 }}>
+        <ul className="nav justify-content-center mb-3 product-tabs" role="tablist" style={{ gap: 150 }}>
           <li className="nav-item">
             <button className="nav-link active bg-transparent text-white fs-4" data-bs-toggle="tab" data-bs-target="#specs">
               Specifications
