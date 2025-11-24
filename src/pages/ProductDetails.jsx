@@ -34,6 +34,24 @@ export default function ProductDetails() {
     const src = ap || tp;
     if (src) {
       const parseNum = (v) => Number(String(v).replace(/[^0-9.]/g, '')) || 0;
+      // when creating a synthesized product from the smaller datasets,
+      // ensure we have an images array of up to 4 items. If the small dataset
+      // only provides a single imported image, try to find the full images
+      // set from `productData` by matching title; otherwise duplicate the
+      // single image to provide thumbnails.
+      let imagesList = src.images || (src.image ? [src.image] : []);
+      if ((!imagesList || imagesList.length < 4) && src.name) {
+        const match = productData.find(p => p.title && p.title.toLowerCase() === String(src.name).toLowerCase());
+        if (match && match.images && match.images.length) {
+          imagesList = match.images.slice(0,4);
+        }
+      }
+      if (!imagesList || imagesList.length === 0) imagesList = [];
+      // if still fewer than 4, duplicate the first image to fill slots (keeps UI consistent)
+      if (imagesList.length > 0 && imagesList.length < 4) {
+        const first = imagesList[0];
+        while (imagesList.length < 4) imagesList.push(first);
+      }
       product = {
         id: src.id,
         title: src.name || src.title,
@@ -42,8 +60,8 @@ export default function ProductDetails() {
         ratings: src.ratingCount || src.ratings || 0,
         finalPrice: parseNum(src.price || src.finalPrice),
         originalPrice: parseNum(src.oldPrice || src.originalPrice) || parseNum(src.price || src.finalPrice),
-        mainImage: src.image || (src.images && src.images[0]) || null,
-        images: src.images || (src.image ? [src.image] : []),
+        mainImage: (src.image || (imagesList && imagesList[0])) || null,
+        images: imagesList,
         brand: src.brand || '',
         category: src.category || '',
         type: src.type || '',
