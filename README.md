@@ -17,5 +17,9 @@ The React Compiler is not enabled on this template because of its impact on dev 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 =======
 # Tech_shop_ReactJs_Project
+<<<<<<< HEAD
 A React.js e-commerce web app featuring product listings, detailed pages, cart management, search, filters, and dynamic UI components. Built with modern React hooks and component-based architecture for smooth shopping experience and clean, scalable code.
 >>>>>>> ef19d8aa970156ac3f44a9b97661163f49770ffa
+=======
+A React.js e-commerce web application featuring product listings, detailed product pages, cart management, search functionality, filters, and dynamic UI components. Built using modern React Hooks, reusable components, and scalable architecture to deliver a smooth shopping experience and clean, maintainable code.
+>>>>>>> afdb71b2800ee53b064186da006b512183bac445
