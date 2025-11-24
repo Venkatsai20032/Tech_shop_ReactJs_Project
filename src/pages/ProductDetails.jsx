@@ -106,7 +106,14 @@ export default function ProductDetails() {
 
   const youSave = (originalPrice || 0) - (finalPrice || 0);
   const discountPercentage = originalPrice ? Math.round((youSave / originalPrice) * 100) : 0;
-  const relatedProducts = productData.filter((p) => p.brand === brand && p.id !== pid).slice(0, 4);
+  // related products: prefer same-brand items, but always provide 4 cards by
+  // falling back to fixed items from `productData` when not enough matches.
+  let relatedProducts = productData.filter((p) => p.brand === brand && p.id !== pid).slice(0, 4);
+  if (relatedProducts.length < 4) {
+    const needed = 4 - relatedProducts.length;
+    const extras = productData.filter(p => p.id !== pid && !relatedProducts.some(r => r.id === p.id)).slice(0, needed);
+    relatedProducts = relatedProducts.concat(extras);
+  }
 
   const { cart, addToCart } = useCart();
   const inCart = cart.find((p) => p.id === product.id);
